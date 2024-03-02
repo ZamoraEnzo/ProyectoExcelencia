@@ -1,34 +1,27 @@
-﻿@model ProyectoCrud.Models.Contacto
+@model MiProyecto.Models.Contacto
 
 @{
     ViewBag.Title = "Eliminar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
 <div class="row" style="margin-top:30px">
     <div class="col-sm-12">
-
-        <div class="panel panel-warning">
+        <div class="panel panel-danger">
             <div class="panel-heading">
-                <h4>Eliminar contacto</h4>
+                <h4>Confirmar eliminación</h4>
             </div>
             <div class="panel-body">
-                <div class="alert alert-danger">
-                    ¿Desea eliminar el contacto: @Html.DisplayTextFor(m => m.Nombres)  @Html.DisplayTextFor(m => m.Apellidos) ?
+                <div class="alert alert-warning">
+                    ¿Está seguro de que desea eliminar el contacto: @Html.DisplayFor(m => m.Nombres) @Html.DisplayFor(m => m.Apellidos) ?
                 </div>
-
-                <form action="@Url.Action("Eliminar","Contacto")" method="post">
-                    <input type="hidden" class="form-control" name="IdContacto" value="@Html.DisplayTextFor(m => m.IdContacto)" />
-
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                    <a class="btn btn-warning" href="@Url.Action("Inicio","Contacto")">Volver</a>
+                <form action="@Url.Action("ConfirmarEliminar","Contacto")" method="post">
+                    <input type="hidden" class="form-control" name="IdContacto" value="@Html.DisplayFor(m => m.IdContacto)" />
+                    <button type="submit" class="btn btn-danger">Confirmar eliminación</button>
+                    <a class="btn btn-info" href="@Url.Action("Inicio","Contacto")">Cancelar</a>
                 </form>
-
             </div>
         </div>
-
-
     </div>
 </div>
+
