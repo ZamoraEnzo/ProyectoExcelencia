@@ -1,19 +1,18 @@
-﻿@model List<ProyectoCrud.Models.Contacto>
+@model List<MiProyecto.Models.Contacto>
 
 @{
-    ViewBag.Title = "Inicio";
+    ViewBag.Title = "Lista de Contactos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="row" style="margin-top:30px">
     <div class="col-sm-12">
-
-        <div class="panel panel-warning">
+        <div class="panel panel-info">
             <div class="panel-heading">
-                <h4>Lista de contacto</h4>
+                <h4>Lista de contactos</h4>
             </div>
             <div class="panel-body">
-                <a class="btn btn-success" href="@Url.Action("Registrar","Contacto")" >Crear Nuevo</a>
+                <a class="btn btn-primary" href="@Url.Action("Crear","Contacto")" >Agregar Nuevo</a>
                 <hr />
                 <div class="table-responsive">
                     <table class="table table-striped">
@@ -21,37 +20,29 @@
                             <tr>
                                 <th>Nombres</th>
                                 <th>Apellidos</th>
-                                <th>Telefono</th>
-                                <th>Correo</th>
-                                <th style="width:150px"></th>
+                                <th>Teléfono</th>
+                                <th>Correo electrónico</th>
+                                <th style="width:150px">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (ProyectoCrud.Models.Contacto item in Model) { 
+                            @foreach (var contacto in Model) { 
                             <tr>
-                                <td>@item.Nombres</td>
-                                <td>@item.Apellidos</td>
-                                <td>@item.Telefono</td>
-                                <td>@item.Correo</td>
+                                <td>@contacto.Nombres</td>
+                                <td>@contacto.Apellidos</td>
+                                <td>@contacto.Telefono</td>
+                                <td>@contacto.Correo</td>
                                 <td>
-                                    <a class="btn btn-primary btn-sm" href="@Url.Action("Editar","Contacto", new { idcontacto = item.IdContacto })">Editar</a>
-                                    <a class="btn btn-danger btn-sm" href="@Url.Action("Eliminar","Contacto", new { idcontacto = item.IdContacto })">Eliminar</a>
-
+                                    <a class="btn btn-warning btn-sm" href="@Url.Action("Editar","Contacto", new { id = contacto.IdContacto })">Editar</a>
+                                    <a class="btn btn-danger btn-sm" href="@Url.Action("ConfirmarEliminar","Contacto", new { id = contacto.IdContacto })">Eliminar</a>
                                 </td>
-
                             </tr>
-                            
                             }
-
-
-
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
 
